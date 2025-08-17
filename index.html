@@ -114,10 +114,6 @@
   <div id="articleView" style="display:none;text-align:left;"></div>
 </main>
 
-<footer>
-  © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
-</footer>
-
 <!-- Musik lokal -->
 <audio id="bgMusic" src="obsessed_slowed.mp3" preload="auto" loop></audio>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -143,13 +139,13 @@ btn.addEventListener('click',()=>{
     music.pause();
     btn.textContent='▶︎';
     btn.setAttribute('aria-pressed','false');
-    toast('Musik dijeda');
+    toast('Kok Berhenti? ');
   } else {
     music.play().then(()=>{
       btn.textContent='❚❚';
       btn.setAttribute('aria-pressed','true');
-      toast('Musik diputar');
-    }).catch(()=>toast('Ketuk untuk memulai musik.'));
+      toast('Sweet...');
+    }).catch(()=>toast('Play untuk kejutan🥳.'));
   }
   isPlaying=!isPlaying;
 });
