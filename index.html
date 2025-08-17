@@ -170,99 +170,39 @@ const articleView=document.getElementById('articleView');
 function loadArticle(id){
   listView.style.display='none';
   articleView.style.display='block';
-<article class="post">
-  <h2>Ringkasan Kegiatan Hari Pertama</h2>
-  
-  <p><strong>Tanggal Kegiatan:</strong> Kamis, 14 Agustus 2025</p>
+if (id === 1) {
+  articleView.innerHTML = `
+    <article class="post" style="max-width:800px;margin:0 auto;padding:20px;line-height:1.6;font-family:sans-serif;">
+      <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:20px;">
+      <h2 style="margin-bottom:20px;">Resume Materi SGD Day 1 – Pendidikan Tinggi, Literasi Keuangan, dan Peran Kampus di Era Digital</h2>
 
-  <hr>
+      <p>Pada kegiatan <em>Student Gathering Day</em> (SGD) hari pertama, berbagai materi disajikan untuk memperkenalkan kehidupan perguruan tinggi dari banyak sisi. Ada pembahasan mengenai sistem pendidikan, pengelolaan keuangan pribadi, organisasi kemahasiswaan, hingga peran kampus di tengah revolusi industri. Selain itu, terdapat sesi khusus peminatan Prodi Agroekoteknologi (AET) yang memberikan gambaran bidang keilmuan dan peluang karier.</p>
 
-  <h3>Materi 1 — Pengenalan Pendidikan Perguruan Tinggi Negeri</h3>
-  <p>
-    <strong>Pemateri:</strong> Prof. Dr. Ir. Anik Martinah Hariati, M.Sc.<br>
-    <strong>Moderator:</strong> Dewi Ratih Rizki Damaiyanti, S.P., M.P.
-  </p>
-  <p>
-    Beliau menjelaskan struktur pendidikan tinggi di Indonesia, mulai dari D3 hingga S3, 
-    dengan <strong>Tri Dharma Perguruan Tinggi</strong> (pendidikan, penelitian, pengabdian masyarakat) 
-    sebagai dasar utama. Di PSDKU UB Kediri terdapat prodi <em>Agroekoteknologi, Agribisnis, 
-    Akuakultur, Peternakan, dan Sosial Ekonomi Perikanan</em>.  
-  </p>
-  <ul>
-    <li><strong>Minimal 144 SKS</strong> untuk lulus (1 SKS = 45 jam per semester).</li>
-    <li>Bentuk pembelajaran: tatap muka, praktikum, lapangan, seminar, dan tugas mandiri.</li>
-    <li><strong>Integritas akademik</strong> wajib dijaga (dilarang titip absen, kecurangan ujian, 
-        manipulasi nilai, hingga plagiarisme).</li>
-    <li>Program mobilitas akademik: Inbound Students, UB Global Academic Engagement, UB STARS, SIAP.</li>
-    <li>Fasilitas: laboratorium lapang terpadu 1.400 m², laboratorium biosains, klimatologi, dan lainnya.</li>
-  </ul>
+      <h3>1. Pengenalan Pendidikan Perguruan Tinggi Negeri</h3>
+      <p>Materi ini menegaskan perbedaan mencolok antara perguruan tinggi dan jenjang sebelumnya. Mahasiswa dianggap <strong>dewasa dan bertanggung jawab penuh</strong> terhadap proses belajarnya. Kuliah tidak sekadar duduk dan mendengarkan, tetapi juga melatih kemandirian, pengelolaan waktu, dan kemampuan mengambil keputusan. <strong>Bagi saya, ini seperti wake-up call</strong> — ternyata menjadi mahasiswa berarti siap menata diri, bukan sekadar mengejar nilai.</p>
 
-  <hr>
+      <h3>2. Literasi Keuangan</h3>
+      <p>Kemampuan mengatur keuangan pribadi menjadi sorotan. Mahasiswa kerap terjebak gaya hidup konsumtif, apalagi setelah memiliki uang saku rutin. Narasumber menekankan: <strong>bedakan kebutuhan dan keinginan</strong>, susun anggaran bulanan, serta biasakan menabung walau sedikit. <strong>Saya merasa ini sangat relevan</strong> — tidak jarang kita tergoda nongkrong atau beli barang baru, tetapi lupa dampak jangka panjang. Materi ini menunjukkan bahwa literasi keuangan bukan teori, tetapi bekal hidup.</p>
 
-  <h3>Materi 2 — Literasi Keuangan</h3>
-  <p>
-    <strong>Pemateri:</strong> Dr. Fadli Mulyadi, S.P., M.P.<br>
-    <strong>Moderator:</strong> Asyifa Anandya, S.Pi., M.Sc.
-  </p>
-  <p>
-    Mahasiswa diperkenalkan mekanisme <strong>UKT</strong> dan <strong>BKT</strong> melalui standar SSBOPT 
-    (standar nasional, jenis prodi, indeks kemahalan wilayah). 
-    Pembebasan UKT dapat diajukan bagi mahasiswa skripsi atau terdampak bencana, 
-    dan banding UKT lewat <strong>SIBAKU</strong> setelah diverifikasi.
-  </p>
-  <ul>
-    <li>Mahasiswa baru PSDKU UB Kediri 2025: 461 orang.</li>
-    <li>Peringkat UB: <strong>601 dunia</strong>, <strong>170 Asia</strong>, <strong>5 nasional</strong>.</li>
-    <li>IKM menjadi wadah pengembangan soft skill, organisasi, dan kepemimpinan.</li>
-  </ul>
+      <h3>3. Kemahasiswaan</h3>
+      <p>Sesi ini memperkenalkan berbagai organisasi kampus. Kehidupan mahasiswa tidak melulu soal akademik — organisasi dan kepanitiaan membentuk soft skill seperti kepemimpinan dan komunikasi. <strong>Poin menarik: aktif berorganisasi tidak selalu mengganggu kuliah</strong>, asalkan tahu prioritas dan manajemen waktu.</p>
 
-  <hr>
+      <h3>4. Peminatan Prodi Agroekoteknologi (AET)</h3>
+      <p>Bidang AET berfokus pada pengelolaan sumber daya pertanian berkelanjutan. Ada banyak jalur peminatan, dari penelitian tanaman hingga teknologi budidaya modern. <strong>Saya pribadi antusias</strong> — bidang ini ternyata sangat strategis untuk menghadapi tantangan global seperti ketahanan pangan dan perubahan iklim.</p>
 
-  <h3>SGD Day 1 AET — Peminatan Prodi Agroekoteknologi</h3>
-  <p>
-    <strong>Pemateri:</strong> Dr. Izmi Yulianah, S.P., M.Si.<br>
-    <strong>Moderator:</strong> Frelyta Ainuz Zahro, S.P., M.P., M.Sc.
-  </p>
-  <p>
-    Visi program studi adalah menjadi pusat pendidikan pertanian unggul 
-    dengan fokus pada <strong>budidaya tanaman, perlindungan tanaman, 
-    dan pengelolaan sumber daya lahan</strong>. Lulusan diarahkan menjadi 
-    wirausaha pertanian, manajer lapangan, atau tenaga profesional.
-  </p>
+      <h3>5. Perguruan Tinggi di Era Digital dan Revolusi Industri</h3>
+      <p>Kampus dituntut menyiapkan lulusan yang menguasai <em>digital skills</em> seperti literasi data, pemanfaatan AI, dan adaptasi terhadap pekerjaan baru. <strong>Mahasiswa tidak bisa pasif</strong> — kita harus aktif mencari ilmu di luar kelas, bahkan jika jurusan bukan IT sekalipun.</p>
 
-  <hr>
+      <h3>6. Peran Perguruan Tinggi bagi Masyarakat</h3>
+      <p>Perguruan tinggi bukan menara gading, tetapi bagian dari masyarakat. Kampus wajib memberi dampak nyata melalui penelitian, inovasi, dan pengabdian. <strong>Bagi saya, ini pesan penting</strong>: ilmu yang dipelajari seharusnya membawa manfaat langsung, bukan sekadar mengejar ijazah.</p>
 
-  <h3>Materi 3 — Perguruan Tinggi di Era Digital dan Revolusi Industri</h3>
-  <p>
-    <strong>Pemateri:</strong> Prof. Dr. Ir. Sholeh Hadi Pramono, M.S.<br>
-    <strong>Moderator:</strong> Muhammad Helmi, S.Pt., M.Agr.Sc.
-  </p>
-  <p>
-    Era digital ditandai kemajuan <strong>IoT, AI, Big Data, dan Smart Factory</strong> 
-    yang mulai masuk ke dunia pertanian melalui <em>smart greenhouse, drone pertanian, 
-    dan sistem monitoring lahan</em>. Penelitian didukung software seperti SPSS, 
-    SmartPLS, dan ArcGIS. <strong>Etika akademik</strong> dan keamanan data tetap 
-    menjadi prioritas.
-  </p>
+      <h3>Penutup</h3>
+      <p>Secara keseluruhan, materi SGD hari pertama seperti memberi <strong>peta perjalanan</strong> sebelum memasuki dunia perkuliahan. Saya belajar bahwa menjadi mahasiswa berarti siap mandiri, cerdas mengelola uang, aktif berorganisasi, akrab dengan teknologi, dan peduli pada lingkungan sosial. Perjalanan ini memang penuh tantangan, tetapi juga membuka banyak peluang jika dijalani dengan kesadaran dan semangat.</p>
 
-  <hr>
-
-  <h3>Materi 4 — Peran Perguruan Tinggi bagi Masyarakat</h3>
-  <p>
-    <strong>Pemateri:</strong> Heri Krismono & Doni (BAPPEDA Kota Kediri)<br>
-    <strong>Moderator:</strong> Septian Maulana Purnama, S.P., M.P.
-  </p>
-  <p>
-    Dijelaskan visi RPJMD Kota Kediri 2025–2029: <strong>"MAPAN" 
-    (Maju, Agamis, Produktif, Aman, Ngangeni)</strong>. Hal ini sejalan 
-    dengan UU No.12 Tahun 2012 bahwa perguruan tinggi berperan 
-    mencetak lulusan kompeten, mandiri, dan beriman.
-  </p>
-
-  <hr>
-  
-  <button class="btn" onclick="backToList()">← Kembali</button>
-</article> else if(id===2){
+      <button class="btn" onclick="backToList()" style="margin-top:30px;">← Kembali</button>
+    </article>
+  `;
+} else if(id===2){
     articleView.innerHTML=`
       <article class="post">
         <img src="https://via.placeholder.com/800x400" alt="Artikel 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
