@@ -1,164 +1,203 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Blog Sederhana</title>
-<meta name="description" content="Blog minimalis dengan musik lokal autoplay dan navigasi tanpa reload." />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #fafafa; --card: #fff; --text: #222; --muted: #6b7280;
-    --accent: #111; --shadow: 0 8px 24px rgba(0,0,0,.08); --radius: 16px;
-  }
-  * {box-sizing: border-box;}
-  html, body {margin:0; height:100%;}
-  body {
-    font-family: Inter, system-ui, sans-serif;
-    background: var(--bg); color: var(--text); line-height:1.6;
-    display:flex; flex-direction:column; align-items:center;
-  }
-  header {width:100%; text-align:center; padding:32px 16px 20px;}
-  .brand {
-    display:inline-flex; align-items:center; gap:10px; background:var(--card);
-    border-radius:var(--radius); padding:10px 14px; box-shadow:var(--shadow);
-  }
-  h1 {margin:0; font-size:clamp(28px,5vw,40px);}
-  .tagline {margin:6px 0 0; color:var(--muted); font-size:14px;}
-  .btn {
-    appearance:none; border:0; cursor:pointer; border-radius:999px;
-    padding:10px 14px; background:var(--accent); color:#fff; font-weight:700;
-    font-size:14px; box-shadow:var(--shadow); transition:transform .12s ease;
-  }
-  .btn:active {transform:translateY(1px) scale(.99);}
-  .btn[disabled]{opacity:.6; cursor:not-allowed;}
-  main {width:min(820px,92vw); margin:10px auto 40px; text-align:center;}
-  .post {
-    background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:22px; margin:18px auto; text-align:left;
-  }
-  .post h2 {margin:0 0 8px; font-size:clamp(20px,3.2vw,26px);}
-  .post p {margin:0; color:#374151;}
-  .post .btn {font-size:13px; padding:8px 14px; margin-top:14px;}
-  footer {width:100%; text-align:center; color:var(--muted); padding:28px 12px 40px;}
-  audio {position:absolute; left:-9999px; width:1px; height:1px;}
-  .toast {
-    position:fixed; left:50%; bottom:20px; transform:translateX(-50%);
-    background:#111; color:#fff; padding:10px 14px; border-radius:10px;
-    box-shadow:var(--shadow); font-size:13px;
-    opacity:0; pointer-events:none; transition:opacity .25s ease;
-  }
-  .toast.show {opacity:1;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vyn Blog</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #333;
+      --card: #fff;
+      --radius: 10px;
+      --shadow: 0 2px 6px rgba(0,0,0,0.1);
+      --muted: #666;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      display: inline-block;
+    }
+    header button {
+      background: #fff;
+      color: #111;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    header button:hover { background: #ddd; }
+    main {
+      max-width: 800px;
+      width: 100%;
+      padding: 0 20px;
+    }
+    .profile {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin: 20px auto 30px;
+      text-align: center;
+      max-width: 320px;
+    }
+    .profile-pic {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+    .profile h2 { margin: 0 0 6px; font-size: 20px; }
+    .profile p { font-size: 14px; color: var(--muted); margin: 0; }
+    .post {
+      background: var(--card);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease-in-out;
+    }
+    .post:hover { transform: translateY(-3px); }
+    .post img {
+      max-width: 100%;
+      border-radius: var(--radius);
+      margin: 12px 0;
+    }
+    .post button {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    .post button:hover { background: #444; }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #111;
+      color: #fff;
+      width: 100%;
+      margin-top: 30px;
+    }
+    iframe#bg-music {
+      width: 0; height: 0; border: 0;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <h1>Blog Sederhana</h1>
-    <button id="musicBtn" class="btn" aria-pressed="false" title="Putar/Jeda Musik">▶︎ Play</button>
-  </div>
-  <p class="tagline">Clean • Minimalis • Modern</p>
-</header>
+  <header>
+    <h1>Vyn Blog</h1>
+    <button onclick="toggleMusic()">🎵 Play Musik</button>
+  </header>
 
-<main id="content">
-  <!-- Halaman daftar artikel -->
-  <div id="listView">
-    <article class="post">
-      <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
-      <h2>Halo! 👋</h2>
-      <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik lokal diputar otomatis.</p>
-      <button class="btn" onclick="loadArticle(1)">Baca Selengkapnya</button>
-    </article>
-    <article class="post">
-      <img src="https://via.placeholder.com/800x400" alt="Artikel 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
-      <h2>Tutorial Ringan</h2>
-      <p>Pelajari cara membuat halaman blog ringan dengan HTML, CSS, dan JS murni.</p>
-      <button class="btn" onclick="loadArticle(2)">Baca Selengkapnya</button>
-    </article>
-  </div>
-  <!-- Halaman detail artikel (dinamis, diisi JS) -->
-  <div id="articleView" style="display:none;text-align:left;"></div>
-</main>
+  <!-- Profil di bawah header -->
+  <section class="profile">
+    <img src="foto_profil.jpg" alt="Foto Vyn" class="profile-pic">
+    <h2>Vyn</h2>
+    <p>Penulis blog ini. Suka musik, desain minimalis, dan coding ringan.</p>
+  </section>
 
-<footer>
-  © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
-</footer>
-
-<!-- Musik lokal -->
-<audio id="bgMusic" src="obsessed_slowed.mp3" preload="auto" loop></audio>
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-<script>
-const music = document.getElementById('bgMusic');
-const btn = document.getElementById('musicBtn');
-const toastEl = document.getElementById('toast');
-let isPlaying = false;
-document.getElementById('y').textContent = new Date().getFullYear();
-
-// Toast helper
-function toast(msg, ms=1800){
-  toastEl.textContent = msg;
-  toastEl.classList.add('show');
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(()=>toastEl.classList.remove('show'),ms);
-}
-
-// Kontrol musik
-btn.addEventListener('click',()=>{
-  if(isPlaying){
-    music.pause();
-    btn.textContent='▶︎ Play';
-    btn.setAttribute('aria-pressed','false');
-    toast('Musik dijeda');
-  } else {
-    music.play().then(()=>{
-      btn.textContent='❚❚ Pause';
-      btn.setAttribute('aria-pressed','true');
-      toast('Musik diputar');
-    }).catch(()=>toast('Ketuk untuk memulai musik.'));
-  }
-  isPlaying=!isPlaying;
-});
-
-// Auto-enable saat pertama klik/tap
-const enableSoundOnce=()=>{
-  music.play().catch(()=>{});
-  window.removeEventListener('touchstart',enableSoundOnce);
-  window.removeEventListener('click',enableSoundOnce);
-};
-window.addEventListener('touchstart',enableSoundOnce,{once:true});
-window.addEventListener('click',enableSoundOnce,{once:true});
-
-// Navigasi artikel
-const listView=document.getElementById('listView');
-const articleView=document.getElementById('articleView');
-
-function loadArticle(id){
-  listView.style.display='none';
-  articleView.style.display='block';
-  if(id===1){
-    articleView.innerHTML=`
+  <main id="content">
+    <!-- Halaman daftar artikel -->
+    <div id="home-page">
       <article class="post">
-        <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
-        <h2>Halo! 👋</h2>
-        <p>Ini artikel lengkap untuk posting pertama. Kamu bisa menulis lebih panjang di sini.</p>
-        <button class="btn" onclick="backToList()">← Kembali</button>
-      </article>`;
-  } else if(id===2){
-    articleView.innerHTML=`
-      <article class="post">
-        <img src="https://via.placeholder.com/800x400" alt="Artikel 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
-        <h2>Tutorial Ringan</h2>
-        <p>Ini halaman lengkap untuk tutorial ringan. Tambahkan konten blog sesuai kebutuhan.</p>
-        <button class="btn" onclick="backToList()">← Kembali</button>
-      </article>`;
-  }
-}
+        <h2>Post Pertama</h2>
+        <p>Ini contoh artikel pertama. Kamu bisa nulis apa saja di sini, misalnya cerita harian, opini, atau tutorial singkat.</p>
+        <img src="IMG_20250815_120218.jpg" alt="Gambar Artikel Pertama">
+        <button onclick="openArticle('satu')">Baca Selengkapnya</button>
+      </article>
 
-function backToList(){
-  articleView.style.display='none';
-  listView.style.display='block';
-}
-</script>
+      <article class="post">
+        <h2>Post Kedua</h2>
+        <p>Blog ini dibuat dengan HTML, CSS, dan sedikit JavaScript. Desainnya simple dan bisa langsung diupload ke cPanel.</p>
+        <button onclick="openArticle('dua')">Baca Selengkapnya</button>
+      </article>
+    </div>
+
+    <!-- Halaman artikel penuh -->
+    <div id="article-page" style="display:none;">
+      <article class="post" id="article-content">
+        <!-- konten artikel diisi via JS -->
+      </article>
+      <button onclick="goBack()">← Kembali</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Vyn Blog. All rights reserved.</p>
+  </footer>
+
+  <!-- Musik dari file lokal -->
+  <iframe id="bg-music" src="" allow="autoplay"></iframe>
+
+  <script>
+    let isPlaying = false;
+
+    function toggleMusic() {
+      const iframe = document.getElementById("bg-music");
+      if (!isPlaying) {
+        iframe.src = "lagu.mp3"; // ganti sesuai nama file musik lokal
+        isPlaying = true;
+        alert("Musik diputar!");
+      } else {
+        iframe.src = "";
+        isPlaying = false;
+        alert("Musik dimatikan!");
+      }
+    }
+
+    function openArticle(id) {
+      document.getElementById('home-page').style.display = 'none';
+      document.getElementById('article-page').style.display = 'block';
+
+      const articleContent = document.getElementById('article-content');
+      if (id === 'satu') {
+        articleContent.innerHTML = `
+          <h2>Post Pertama - Lengkap</h2>
+          <p>Ini adalah versi lengkap artikel pertama. Bisa memuat banyak paragraf dan gambar.</p>
+          <img src="IMG_20250815_120218.jpg" alt="Gambar Artikel Pertama">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae.</p>
+        `;
+      } else if (id === 'dua') {
+        articleContent.innerHTML = `
+          <h2>Post Kedua - Lengkap</h2>
+          <p>Artikel ini menjelaskan pembuatan blog sederhana dengan HTML, CSS, dan sedikit JavaScript.</p>
+          <p>Desainnya clean, mudah diupload ke GitHub Pages atau cPanel hosting.</p>
+        `;
+      }
+    }
+
+    function goBack() {
+      document.getElementById('article-page').style.display = 'none';
+      document.getElementById('home-page').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
