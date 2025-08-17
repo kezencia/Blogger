@@ -25,7 +25,7 @@
     }
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.2rem;
       display: inline-block;
     }
     header button {
@@ -55,19 +55,26 @@
       margin: 20px auto;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, opacity 0.6s ease;
+      transition: transform 0.2s ease-in-out;
       text-align: left;
-      opacity: 0;
-      transform: translateY(20px);
     }
-    article.visible {
-      opacity: 1;
-      transform: translateY(0);
+    article:hover {
+      transform: translateY(-3px);
     }
-    article img {
-      max-width: 100%;
+    .read-more {
+      display: inline-block;
+      margin-top: 12px;
+      background: #111;
+      color: #fff;
+      padding: 8px 16px;
       border-radius: 6px;
-      margin-bottom: 15px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s ease-in-out;
+    }
+    .read-more:hover {
+      background: #444;
     }
     footer {
       text-align: center;
@@ -77,7 +84,7 @@
       width: 100%;
       margin-top: 30px;
     }
-    /* iframe musik disembunyikan */
+    /* iframe youtube dikecilkan dan disembunyikan */
     iframe#bg-music {
       width: 0;
       height: 0;
@@ -88,26 +95,26 @@
 <body>
   <header>
     <h1>Blog Sederhana Saya</h1>
-    <button onclick="toggleMusic()" id="musicBtn">Play Musik</button>
+    <button onclick="playMusic()">Play Musik</button>
   </header>
 
   <main>
     <article>
-      <img src="https://source.unsplash.com/800x400/?nature" alt="Post 1">
       <h2>Post Pertama</h2>
       <p>Ini contoh artikel pertama. Kamu bisa nulis apa saja di sini, misalnya cerita harian, opini, atau tutorial singkat.</p>
+      <a href="#" class="read-more">Baca Selengkapnya</a>
     </article>
 
     <article>
-      <img src="https://source.unsplash.com/800x400/?city" alt="Post 2">
       <h2>Post Kedua</h2>
-      <p>Blog ini dibuat dengan HTML, CSS, dan sedikit JavaScript. Desainnya simple dan bisa langsung diupload ke GitHub Pages.</p>
+      <p>Blog ini dibuat dengan HTML, CSS, dan sedikit JavaScript. Desainnya simple dan bisa langsung diupload ke cPanel.</p>
+      <a href="#" class="read-more">Baca Selengkapnya</a>
     </article>
 
     <article>
-      <img src="https://source.unsplash.com/800x400/?technology" alt="Post 3">
       <h2>Post Ketiga</h2>
       <p>Kamu bisa tambah artikel baru hanya dengan copy-paste blok <code>&lt;article&gt;</code> di dalam tag &lt;main&gt;.</p>
+      <a href="#" class="read-more">Baca Selengkapnya</a>
     </article>
   </main>
 
@@ -115,37 +122,18 @@
     <p>&copy; 2025 Blog Sederhana. All rights reserved.</p>
   </footer>
 
-  <!-- Musik YouTube disembunyikan -->
-  <iframe id="bg-music" src="" allow="autoplay"></iframe>
+  <!-- Musik dari YouTube (disembunyikan) -->
+  <iframe 
+    id="bg-music"
+    src=""
+    allow="autoplay">
+  </iframe>
 
   <script>
-    // Animasi muncul saat scroll
-    const articles = document.querySelectorAll("article");
-    window.addEventListener("scroll", checkArticles);
-    window.addEventListener("load", checkArticles);
-    function checkArticles() {
-      const trigger = window.innerHeight * 0.9;
-      articles.forEach(article => {
-        const top = article.getBoundingClientRect().top;
-        if (top < trigger) {
-          article.classList.add("visible");
-        }
-      });
-    }
-
-    // Musik Play/Pause
-    let isPlaying = false;
-    function toggleMusic() {
+    function playMusic() {
       const iframe = document.getElementById("bg-music");
-      const btn = document.getElementById("musicBtn");
-      if (!isPlaying) {
-        iframe.src = "https://www.youtube.com/embed/4febO0OejZs?autoplay=1&loop=1&playlist=4febO0OejZs";
-        btn.textContent = "Pause Musik";
-      } else {
-        iframe.src = "";
-        btn.textContent = "Play Musik";
-      }
-      isPlaying = !isPlaying;
+      iframe.src = "https://www.youtube.com/embed/4febO0OejZs?autoplay=1&loop=1&playlist=4febO0OejZs";
+      alert("Musik diputar!");
     }
   </script>
 </body>
