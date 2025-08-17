@@ -1,198 +1,154 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog Sederhana</title>
-  <meta name="description" content="Blog minimalis – clean, modern, simple. Musik YouTube tersembunyi (audio-only)." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kezencia Blog</title>
   <style>
-    :root {
-      --bg: #fafafa;
-      --card: #ffffff;
-      --text: #222222;
-      --muted: #6b7280;
-      --accent: #111111;
-      --shadow: 0 8px 24px rgba(0,0,0,.08);
-      --radius: 16px;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.6;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
     }
     header {
-      width: 100%; text-align: center; padding: 40px 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #333;
+      color: #fff;
     }
-    .brand {
-      display: inline-flex; align-items: center; gap: 10px; background: var(--card);
-      border-radius: var(--radius); padding: 10px 14px; box-shadow: var(--shadow);
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
     }
-    h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
-    .tagline { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-    .btn {
-      appearance: none; border: 0; cursor: pointer; border-radius: 999px; padding: 10px 14px;
-      background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; box-shadow: var(--shadow);
-      transition: transform .12s ease, opacity .2s ease;
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1rem;
     }
-    .btn[disabled] { opacity: .6; cursor: not-allowed; }
-    .btn:active { transform: translateY(1px) scale(.99); }main { width: min(820px, 92vw); margin: 10px auto 40px; text-align: center; }
-.post { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 22px; margin: 18px auto; text-align: left; }
-.post h2 { margin: 0 0 8px; font-size: clamp(20px, 3.2vw, 26px); }
-.post p { margin: 0; color: #374151; }
-
-footer { width: 100%; text-align: center; color: var(--muted); padding: 28px 12px 40px; }
-
-/* Sembunyikan iframe video YouTube (audio-only) */
-#bg-music { position: absolute; left: -9999px; width: 1px; height: 1px; border: 0; }
-
-/* Toast kecil untuk info izin autoplay */
-.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-  background: #111; color: #fff; padding: 10px 14px; border-radius: 10px; box-shadow: var(--shadow);
-  font-size: 13px; opacity: 0; pointer-events: none; transition: opacity .25s ease; }
-.toast.show { opacity: 1; }
-
+    nav a:hover {
+      text-decoration: underline;
+    }
+    button {
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 20px;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ddd;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .post {
+      background: #fff;
+      margin-bottom: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slideUp 1s ease forwards;
+    }
+    .post img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .post-content {
+      padding: 20px;
+    }
+    .post-content h2 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+    .post-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #333;
+      color: #fff;
+      margin-top: 40px;
+    }
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">
-      <h1>Blog Sederhana</h1>
-      <button id="musicBtn" class="btn" aria-pressed="false" title="Putar/Jeda Musik">▶︎ Play</button>
+    <h1>Kezencia Blog</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Blog</a>
+      <a href="#">About</a>
+    </nav>
+    <button onclick="toggleMusic()">Play Music</button>
+    <audio id="bg-music">
+      <source src="https://dl.dropboxusercontent.com/scl/fi/t6oyw93m6f6vlj9d2nd77/yt1s.com-4febO0OejZs.mp3?rlkey=0p0qu2gz7jq5mty1g40k5cfhl" type="audio/mpeg">
+    </audio>
+  </header>
+
+  <div class="container">
+    <div class="post" style="animation-delay:0.2s;">
+      <img src="https://source.unsplash.com/900x400/?nature,1" alt="Post 1">
+      <div class="post-content">
+        <h2>Judul Artikel Pertama</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blog ini dibuat untuk contoh tampilan minimalis di GitHub Pages.</p>
+      </div>
     </div>
-    <p class="tagline">Clean • Minimalis • Modern</p>
-  </header>  <main>
-    <article class="post">
-      <h2>Halo! 👋</h2>
-      <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik YouTube diputar sebagai <em>audio-only</em> (videonya disembunyikan).</p>
-    </article>
-    <article class="post">
-      <h2>Tambahkan Post Baru</h2>
-      <p>Duplikasi blok <code>&lt;article class="post"&gt;...&lt;/article&gt;</code> lalu sesuaikan judul dan isi. Desain responsif &amp; rapi di HP.</p>
-    </article>
-    <article class="post">
-      <h2>Kustomisasi</h2>
-      <p>Ubah warna, font, dan jarak di bagian <code>:root</code> atau style lain sesuai selera kamu.</p>
-    </article>
-  </main>  <footer>
-    © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
-  </footer>  <!-- Iframe musik YouTube (disembunyikan) -->  <div id="player-container" aria-hidden="true">
-    <div id="bg-music"></div>
-  </div>  <div id="toast" class="toast" role="status" aria-live="polite"></div>  <script>
-    // ====== KONFIGURASI ======
-    const YT_VIDEO_ID = "4febO0OejZs"; // dari link yang kamu berikan
-    const START_VOLUME = 60;            // 0..100
+    <div class="post" style="animation-delay:0.4s;">
+      <img src="https://source.unsplash.com/900x400/?city,2" alt="Post 2">
+      <div class="post-content">
+        <h2>Judul Artikel Kedua</h2>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tampilan blog ini responsif dan ringan.</p>
+      </div>
+    </div>
+    <div class="post" style="animation-delay:0.6s;">
+      <img src="https://source.unsplash.com/900x400/?technology,3" alt="Post 3">
+      <div class="post-content">
+        <h2>Judul Artikel Ketiga</h2>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+  </div>
 
-    // ====== UTIL ======
-    const $ = (sel) => document.querySelector(sel);
-    const toast = (msg, ms = 1800) => {
-      const t = $('#toast'); t.textContent = msg; t.classList.add('show');
-      clearTimeout(window.__toastTimer);
-      window.__toastTimer = setTimeout(() => t.classList.remove('show'), ms);
-    };
+  <footer>
+    &copy; 2025 Kezencia Blog. Dibuat dengan ❤️ di GitHub Pages.
+  </footer>
 
-    // Tahun footer
-    $('#y').textContent = new Date().getFullYear();
+  <script>
+    const music = document.getElementById("bg-music");
+    const btn = document.querySelector("button");
+    let isPlaying = false;
 
-    // ====== YOUTUBE IFRAME API SETUP ======
-    let player, isPlaying = false, userApprovedSound = false;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('bg-music', {
-        height: '1', width: '1', videoId: YT_VIDEO_ID,
-        playerVars: {
-          autoplay: 1,            // coba autoplay
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          playsinline: 1,
-          rel: 0,
-          loop: 1,
-          playlist: YT_VIDEO_ID,
-          mute: 1                 // mulai dalam kondisi mute agar diizinkan autoplay
-        },
-        events: { onReady: onPlayerReady, onStateChange: onStateChange }
-      });
-    }
-
-    function onPlayerReady(e) {
-      try {
-        e.target.setVolume(START_VOLUME);
-        e.target.playVideo();
-        isPlaying = true;
-        // Coba unmute otomatis (banyak browser akan blokir). Jika gagal, tetap mute.
-        const unmuted = e.target.isMuted() === false;
-        if (!unmuted) {
-          // menunggu interaksi pengguna untuk unmute
-          toast('Musik siap. Ketuk ▶︎ Play untuk nyalakan suara.');
-        }
-      } catch (err) {
-        console.warn('Player ready error:', err);
+    function toggleMusic() {
+      if (!isPlaying) {
+        music.play();
+        btn.textContent = "Pause Music";
+      } else {
+        music.pause();
+        btn.textContent = "Play Music";
       }
+      isPlaying = !isPlaying;
     }
-
-    function onStateChange(ev) {
-      // 1=PLAYING, 2=PAUSED, 0=ENDED (akan loop)
-      if (ev.data === YT.PlayerState.PLAYING) { isPlaying = true; }
-      if (ev.data === YT.PlayerState.PAUSED)  { isPlaying = false; }
-    }
-
-    // Tombol kontrol
-    const btn = $('#musicBtn');
-    btn.addEventListener('click', async () => {
-      if (!player) return;
-      try {
-        if (player.isMuted()) {
-          player.unMute();
-        }
-        if (isPlaying) {
-          player.pauseVideo();
-          isPlaying = false;
-          btn.textContent = '▶︎ Play';
-          btn.setAttribute('aria-pressed', 'false');
-          toast('Musik dijeda');
-        } else {
-          await player.playVideo();
-          isPlaying = true;
-          btn.textContent = '❚❚ Pause';
-          btn.setAttribute('aria-pressed', 'true');
-          userApprovedSound = true;
-          // Pastikan bersuara
-          if (player.isMuted()) player.unMute();
-          toast('Musik diputar');
-        }
-      } catch (err) {
-        console.warn(err);
-        toast('Browser memblokir autoplay. Ketuk lagi untuk memulai.');
-      }
-    });
-
-    // Setelah ada interaksi pertama di halaman, coba unmute & play
-    const enableSoundOnce = () => {
-      if (!player) return;
-      try {
-        player.playVideo();
-        player.unMute();
-        btn.textContent = '❚❚ Pause';
-        btn.setAttribute('aria-pressed', 'true');
-        isPlaying = true; userApprovedSound = true;
-      } catch {}
-      window.removeEventListener('touchstart', enableSoundOnce);
-      window.removeEventListener('click', enableSoundOnce);
-    };
-    window.addEventListener('touchstart', enableSoundOnce, { once: true });
-    window.addEventListener('click', enableSoundOnce, { once: true });
-
-    // Muat YouTube Iframe API
-    (function loadYT(){
-      const s = document.createElement('script');
-      s.src = 'https://www.youtube.com/iframe_api';
-      document.head.appendChild(s);
-    })();
-  </script></body>
+  </script>
+</body>
 </html>
