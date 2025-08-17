@@ -170,14 +170,38 @@ const articleView=document.getElementById('articleView');
 function loadArticle(id){
   listView.style.display='none';
   articleView.style.display='block';
-  if(id===1){
-    articleView.innerHTML=`
-      <article class="post">
-        <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
-        <h2>Halo! 👋</h2>
-        <p>Ini artikel lengkap untuk posting pertama. Kamu bisa menulis lebih panjang di sini.</p>
-        <button class="btn" onclick="backToList()">← Kembali</button>
-      </article>`;
+if (id === 1) {
+  articleView.innerHTML = `
+    <article class="post" style="max-width:800px;margin:0 auto;padding:20px;line-height:1.6;font-family:sans-serif;">
+      <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:20px;">
+      <h2 style="margin-bottom:20px;">Resume Materi SGD Day 1 – Pendidikan, Literasi Keuangan, dan Peran Perguruan Tinggi</h2>
+
+      <p>Pada kegiatan <em>Student Gathering Day</em> (SGD) hari pertama, kami mendapatkan sejumlah materi yang membuka wawasan mengenai pendidikan tinggi, literasi keuangan, kemahasiswaan, serta peran perguruan tinggi dalam menghadapi tantangan era digital dan revolusi industri. Selain itu, terdapat sesi peminatan program studi Agroekoteknologi (AET) yang memperkenalkan bidang keilmuan sekaligus peluang pengembangannya.</p>
+
+      <h3>1. Pengenalan Pendidikan Perguruan Tinggi Negeri</h3>
+      <p>Materi ini menjelaskan perbedaan pendidikan di perguruan tinggi dibandingkan jenjang sebelumnya. Perguruan tinggi tidak hanya bertujuan menghasilkan lulusan yang menguasai teori, tetapi juga membentuk pribadi yang kritis, mandiri, dan adaptif. Ditekankan pula bahwa mahasiswa adalah insan dewasa yang bertanggung jawab atas proses belajarnya sendiri. <strong>Saya merasa poin ini cukup menampar</strong> — ternyata kuliah bukan hanya duduk di kelas dan mencatat, melainkan belajar mengelola waktu, menentukan prioritas, dan mempersiapkan diri menghadapi dunia kerja.</p>
+
+      <h3>2. Literasi Keuangan</h3>
+      <p>Materi berikutnya membahas pentingnya kemampuan mengelola keuangan sejak dini. Mahasiswa kerap tergoda gaya hidup konsumtif, apalagi saat mulai menerima uang saku rutin atau bahkan gaji dari pekerjaan paruh waktu. Narasumber menekankan konsep sederhana: bedakan kebutuhan dan keinginan, atur anggaran bulanan, serta biasakan menabung meskipun nominalnya kecil. <strong>Saya pribadi merasa bagian ini sangat relevan</strong> — jujur saja, sulit menolak ajakan nongkrong atau membeli gadget baru. Namun setelah mendengar contoh kasus mahasiswa yang terlilit hutang hanya karena gaya hidup, saya jadi sadar bahwa literasi keuangan bukan sekadar teori, melainkan keterampilan bertahan hidup.</p>
+
+      <h3>3. Kemahasiswaan</h3>
+      <p>Pada sesi kemahasiswaan, diperkenalkan berbagai organisasi dan kegiatan di kampus. Kehidupan mahasiswa ternyata bukan hanya urusan akademik, tetapi juga pembentukan karakter melalui organisasi, kepanitiaan, dan pengabdian masyarakat. Narasumber mendorong kami untuk aktif, tetapi tetap mengutamakan keseimbangan agar kuliah tidak terbengkalai. <strong>Saya menilai materi ini membuka perspektif</strong>: aktif berorganisasi tidak otomatis mengganggu nilai, justru bisa mengasah soft skill seperti komunikasi, manajemen waktu, dan kepemimpinan.</p>
+
+      <h3>4. Peminatan Prodi Agroekoteknologi (AET)</h3>
+      <p>Sebagai mahasiswa baru AET, kami mendapat penjelasan tentang bidang ini yang fokus pada pengelolaan sumber daya alam pertanian secara berkelanjutan. Diperkenalkan berbagai jalur peminatan dan prospek kerja, mulai dari penelitian tanaman, teknologi budidaya, hingga pengembangan pertanian ramah lingkungan. <strong>Saya pribadi cukup antusias</strong> — ternyata bidang pertanian modern sangat kompleks dan berhubungan erat dengan isu global seperti perubahan iklim dan ketahanan pangan.</p>
+
+      <h3>5. Perguruan Tinggi di Era Digital dan Revolusi Industri</h3>
+      <p>Materi ini membahas tantangan yang dihadapi perguruan tinggi di tengah percepatan teknologi. Lulusan saat ini harus menguasai <em>digital skills</em> seperti literasi data, pemanfaatan kecerdasan buatan, dan adaptasi terhadap pekerjaan yang cepat berubah. Narasumber menekankan bahwa mahasiswa tidak bisa hanya mengandalkan kurikulum formal, tetapi harus proaktif mencari pengetahuan baru. <strong>Saya sempat merasa tertantang</strong> — mau tidak mau, kita harus belajar teknologi meskipun jurusan kita bukan IT.</p>
+
+      <h3>6. Peran Perguruan Tinggi bagi Masyarakat</h3>
+      <p>Materi terakhir mengingatkan bahwa kampus bukan menara gading, tetapi bagian dari masyarakat. Perguruan tinggi memiliki tanggung jawab untuk memberikan dampak positif melalui penelitian, inovasi, dan pengabdian masyarakat. Mahasiswa diharapkan tidak hanya fokus pada nilai, tetapi juga mencari cara agar ilmu yang dipelajari bermanfaat langsung. <strong>Bagi saya, pesan ini penting</strong>: ilmu bukan sekadar untuk ijazah, tetapi untuk perubahan nyata.</p>
+
+      <h3>Penutup</h3>
+      <p>Keseluruhan materi SGD hari pertama memberi gambaran utuh tentang dunia perkuliahan. Saya belajar bahwa menjadi mahasiswa berarti siap belajar mandiri, mengatur keuangan, aktif di organisasi, menguasai teknologi, dan memiliki kepedulian sosial. Rasanya seperti dibekali peta sebelum memasuki perjalanan panjang — perjalanan yang menantang, tetapi penuh peluang jika dijalani dengan kesadaran dan semangat.</p>
+
+      <button class="btn" onclick="backToList()" style="margin-top:30px;">← Kembali</button>
+    </article>
+  `;
   } else if(id===2){
     articleView.innerHTML=`
       <article class="post">
