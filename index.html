@@ -3,149 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kezencia Blog</title>
+  <title>Blog Sederhana</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
+      background: #fafafa;
       color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: #333;
+      background: #111;
       color: #fff;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 2rem;
+      display: inline-block;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    button {
-      padding: 6px 14px;
-      font-size: 0.9rem;
-      border: none;
-      border-radius: 20px;
+    header button {
       background: #fff;
-      color: #333;
+      color: #111;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.2s ease-in-out;
     }
-    button:hover {
+    header button:hover {
       background: #ddd;
     }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    .post {
-      background: #fff;
-      margin-bottom: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transform: translateY(30px);
-      opacity: 0;
-      animation: slideUp 1s ease forwards;
-    }
-    .post img {
+    main {
+      max-width: 800px;
       width: 100%;
-      height: auto;
-      display: block;
+      padding: 0 20px;
+      text-align: center;
     }
-    .post-content {
+    article {
+      background: #fff;
       padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, opacity 0.6s ease;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
     }
-    .post-content h2 {
-      margin: 0 0 10px;
-      font-size: 1.5rem;
+    article.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .post-content p {
-      font-size: 1rem;
-      line-height: 1.6;
+    article img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 15px;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      background: #333;
+      padding: 20px 0;
+      background: #111;
       color: #fff;
-      margin-top: 40px;
+      width: 100%;
+      margin-top: 30px;
     }
-    @keyframes slideUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    /* iframe musik disembunyikan */
+    iframe#bg-music {
+      width: 0;
+      height: 0;
+      border: 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Kezencia Blog</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Blog</a>
-      <a href="#">About</a>
-    </nav>
-    <button onclick="toggleMusic()">Play Music</button>
-    <audio id="bg-music">
-      <source src="https://dl.dropboxusercontent.com/scl/fi/t6oyw93m6f6vlj9d2nd77/yt1s.com-4febO0OejZs.mp3?rlkey=0p0qu2gz7jq5mty1g40k5cfhl" type="audio/mpeg">
-    </audio>
+    <h1>Blog Sederhana Saya</h1>
+    <button onclick="toggleMusic()" id="musicBtn">Play Musik</button>
   </header>
 
-  <div class="container">
-    <div class="post" style="animation-delay:0.2s;">
-      <img src="https://source.unsplash.com/900x400/?nature,1" alt="Post 1">
-      <div class="post-content">
-        <h2>Judul Artikel Pertama</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blog ini dibuat untuk contoh tampilan minimalis di GitHub Pages.</p>
-      </div>
-    </div>
-    <div class="post" style="animation-delay:0.4s;">
-      <img src="https://source.unsplash.com/900x400/?city,2" alt="Post 2">
-      <div class="post-content">
-        <h2>Judul Artikel Kedua</h2>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tampilan blog ini responsif dan ringan.</p>
-      </div>
-    </div>
-    <div class="post" style="animation-delay:0.6s;">
-      <img src="https://source.unsplash.com/900x400/?technology,3" alt="Post 3">
-      <div class="post-content">
-        <h2>Judul Artikel Ketiga</h2>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-    </div>
-  </div>
+  <main>
+    <article>
+      <img src="https://source.unsplash.com/800x400/?nature" alt="Post 1">
+      <h2>Post Pertama</h2>
+      <p>Ini contoh artikel pertama. Kamu bisa nulis apa saja di sini, misalnya cerita harian, opini, atau tutorial singkat.</p>
+    </article>
+
+    <article>
+      <img src="https://source.unsplash.com/800x400/?city" alt="Post 2">
+      <h2>Post Kedua</h2>
+      <p>Blog ini dibuat dengan HTML, CSS, dan sedikit JavaScript. Desainnya simple dan bisa langsung diupload ke GitHub Pages.</p>
+    </article>
+
+    <article>
+      <img src="https://source.unsplash.com/800x400/?technology" alt="Post 3">
+      <h2>Post Ketiga</h2>
+      <p>Kamu bisa tambah artikel baru hanya dengan copy-paste blok <code>&lt;article&gt;</code> di dalam tag &lt;main&gt;.</p>
+    </article>
+  </main>
 
   <footer>
-    &copy; 2025 Kezencia Blog. Dibuat dengan ❤️ di GitHub Pages.
+    <p>&copy; 2025 Blog Sederhana. All rights reserved.</p>
   </footer>
 
-  <script>
-    const music = document.getElementById("bg-music");
-    const btn = document.querySelector("button");
-    let isPlaying = false;
+  <!-- Musik YouTube disembunyikan -->
+  <iframe id="bg-music" src="" allow="autoplay"></iframe>
 
+  <script>
+    // Animasi muncul saat scroll
+    const articles = document.querySelectorAll("article");
+    window.addEventListener("scroll", checkArticles);
+    window.addEventListener("load", checkArticles);
+    function checkArticles() {
+      const trigger = window.innerHeight * 0.9;
+      articles.forEach(article => {
+        const top = article.getBoundingClientRect().top;
+        if (top < trigger) {
+          article.classList.add("visible");
+        }
+      });
+    }
+
+    // Musik Play/Pause
+    let isPlaying = false;
     function toggleMusic() {
+      const iframe = document.getElementById("bg-music");
+      const btn = document.getElementById("musicBtn");
       if (!isPlaying) {
-        music.play();
-        btn.textContent = "Pause Music";
+        iframe.src = "https://www.youtube.com/embed/4febO0OejZs?autoplay=1&loop=1&playlist=4febO0OejZs";
+        btn.textContent = "Pause Musik";
       } else {
-        music.pause();
-        btn.textContent = "Play Music";
+        iframe.src = "";
+        btn.textContent = "Play Musik";
       }
       isPlaying = !isPlaying;
     }
