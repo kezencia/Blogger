@@ -170,39 +170,99 @@ const articleView=document.getElementById('articleView');
 function loadArticle(id){
   listView.style.display='none';
   articleView.style.display='block';
-if (id === 1) {
-  articleView.innerHTML = `
-    <article class="post" style="max-width:800px;margin:0 auto;padding:20px;line-height:1.6;font-family:sans-serif;">
-      <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:20px;">
-      <h2 style="margin-bottom:20px;">Resume Materi SGD Day 1 – Pendidikan, Literasi Keuangan, dan Peran Perguruan Tinggi</h2>
+<article class="post">
+  <h2>Ringkasan Kegiatan Hari Pertama</h2>
+  
+  <p><strong>Tanggal Kegiatan:</strong> Kamis, 14 Agustus 2025</p>
 
-      <p>Pada kegiatan <em>Student Gathering Day</em> (SGD) hari pertama, kami mendapatkan sejumlah materi yang membuka wawasan mengenai pendidikan tinggi, literasi keuangan, kemahasiswaan, serta peran perguruan tinggi dalam menghadapi tantangan era digital dan revolusi industri. Selain itu, terdapat sesi peminatan program studi Agroekoteknologi (AET) yang memperkenalkan bidang keilmuan sekaligus peluang pengembangannya.</p>
+  <hr>
 
-      <h3>1. Pengenalan Pendidikan Perguruan Tinggi Negeri</h3>
-      <p>Materi ini menjelaskan perbedaan pendidikan di perguruan tinggi dibandingkan jenjang sebelumnya. Perguruan tinggi tidak hanya bertujuan menghasilkan lulusan yang menguasai teori, tetapi juga membentuk pribadi yang kritis, mandiri, dan adaptif. Ditekankan pula bahwa mahasiswa adalah insan dewasa yang bertanggung jawab atas proses belajarnya sendiri. <strong>Saya merasa poin ini cukup menampar</strong> — ternyata kuliah bukan hanya duduk di kelas dan mencatat, melainkan belajar mengelola waktu, menentukan prioritas, dan mempersiapkan diri menghadapi dunia kerja.</p>
+  <h3>Materi 1 — Pengenalan Pendidikan Perguruan Tinggi Negeri</h3>
+  <p>
+    <strong>Pemateri:</strong> Prof. Dr. Ir. Anik Martinah Hariati, M.Sc.<br>
+    <strong>Moderator:</strong> Dewi Ratih Rizki Damaiyanti, S.P., M.P.
+  </p>
+  <p>
+    Beliau menjelaskan struktur pendidikan tinggi di Indonesia, mulai dari D3 hingga S3, 
+    dengan <strong>Tri Dharma Perguruan Tinggi</strong> (pendidikan, penelitian, pengabdian masyarakat) 
+    sebagai dasar utama. Di PSDKU UB Kediri terdapat prodi <em>Agroekoteknologi, Agribisnis, 
+    Akuakultur, Peternakan, dan Sosial Ekonomi Perikanan</em>.  
+  </p>
+  <ul>
+    <li><strong>Minimal 144 SKS</strong> untuk lulus (1 SKS = 45 jam per semester).</li>
+    <li>Bentuk pembelajaran: tatap muka, praktikum, lapangan, seminar, dan tugas mandiri.</li>
+    <li><strong>Integritas akademik</strong> wajib dijaga (dilarang titip absen, kecurangan ujian, 
+        manipulasi nilai, hingga plagiarisme).</li>
+    <li>Program mobilitas akademik: Inbound Students, UB Global Academic Engagement, UB STARS, SIAP.</li>
+    <li>Fasilitas: laboratorium lapang terpadu 1.400 m², laboratorium biosains, klimatologi, dan lainnya.</li>
+  </ul>
 
-      <h3>2. Literasi Keuangan</h3>
-      <p>Materi berikutnya membahas pentingnya kemampuan mengelola keuangan sejak dini. Mahasiswa kerap tergoda gaya hidup konsumtif, apalagi saat mulai menerima uang saku rutin atau bahkan gaji dari pekerjaan paruh waktu. Narasumber menekankan konsep sederhana: bedakan kebutuhan dan keinginan, atur anggaran bulanan, serta biasakan menabung meskipun nominalnya kecil. <strong>Saya pribadi merasa bagian ini sangat relevan</strong> — jujur saja, sulit menolak ajakan nongkrong atau membeli gadget baru. Namun setelah mendengar contoh kasus mahasiswa yang terlilit hutang hanya karena gaya hidup, saya jadi sadar bahwa literasi keuangan bukan sekadar teori, melainkan keterampilan bertahan hidup.</p>
+  <hr>
 
-      <h3>3. Kemahasiswaan</h3>
-      <p>Pada sesi kemahasiswaan, diperkenalkan berbagai organisasi dan kegiatan di kampus. Kehidupan mahasiswa ternyata bukan hanya urusan akademik, tetapi juga pembentukan karakter melalui organisasi, kepanitiaan, dan pengabdian masyarakat. Narasumber mendorong kami untuk aktif, tetapi tetap mengutamakan keseimbangan agar kuliah tidak terbengkalai. <strong>Saya menilai materi ini membuka perspektif</strong>: aktif berorganisasi tidak otomatis mengganggu nilai, justru bisa mengasah soft skill seperti komunikasi, manajemen waktu, dan kepemimpinan.</p>
+  <h3>Materi 2 — Literasi Keuangan</h3>
+  <p>
+    <strong>Pemateri:</strong> Dr. Fadli Mulyadi, S.P., M.P.<br>
+    <strong>Moderator:</strong> Asyifa Anandya, S.Pi., M.Sc.
+  </p>
+  <p>
+    Mahasiswa diperkenalkan mekanisme <strong>UKT</strong> dan <strong>BKT</strong> melalui standar SSBOPT 
+    (standar nasional, jenis prodi, indeks kemahalan wilayah). 
+    Pembebasan UKT dapat diajukan bagi mahasiswa skripsi atau terdampak bencana, 
+    dan banding UKT lewat <strong>SIBAKU</strong> setelah diverifikasi.
+  </p>
+  <ul>
+    <li>Mahasiswa baru PSDKU UB Kediri 2025: 461 orang.</li>
+    <li>Peringkat UB: <strong>601 dunia</strong>, <strong>170 Asia</strong>, <strong>5 nasional</strong>.</li>
+    <li>IKM menjadi wadah pengembangan soft skill, organisasi, dan kepemimpinan.</li>
+  </ul>
 
-      <h3>4. Peminatan Prodi Agroekoteknologi (AET)</h3>
-      <p>Sebagai mahasiswa baru AET, kami mendapat penjelasan tentang bidang ini yang fokus pada pengelolaan sumber daya alam pertanian secara berkelanjutan. Diperkenalkan berbagai jalur peminatan dan prospek kerja, mulai dari penelitian tanaman, teknologi budidaya, hingga pengembangan pertanian ramah lingkungan. <strong>Saya pribadi cukup antusias</strong> — ternyata bidang pertanian modern sangat kompleks dan berhubungan erat dengan isu global seperti perubahan iklim dan ketahanan pangan.</p>
+  <hr>
 
-      <h3>5. Perguruan Tinggi di Era Digital dan Revolusi Industri</h3>
-      <p>Materi ini membahas tantangan yang dihadapi perguruan tinggi di tengah percepatan teknologi. Lulusan saat ini harus menguasai <em>digital skills</em> seperti literasi data, pemanfaatan kecerdasan buatan, dan adaptasi terhadap pekerjaan yang cepat berubah. Narasumber menekankan bahwa mahasiswa tidak bisa hanya mengandalkan kurikulum formal, tetapi harus proaktif mencari pengetahuan baru. <strong>Saya sempat merasa tertantang</strong> — mau tidak mau, kita harus belajar teknologi meskipun jurusan kita bukan IT.</p>
+  <h3>SGD Day 1 AET — Peminatan Prodi Agroekoteknologi</h3>
+  <p>
+    <strong>Pemateri:</strong> Dr. Izmi Yulianah, S.P., M.Si.<br>
+    <strong>Moderator:</strong> Frelyta Ainuz Zahro, S.P., M.P., M.Sc.
+  </p>
+  <p>
+    Visi program studi adalah menjadi pusat pendidikan pertanian unggul 
+    dengan fokus pada <strong>budidaya tanaman, perlindungan tanaman, 
+    dan pengelolaan sumber daya lahan</strong>. Lulusan diarahkan menjadi 
+    wirausaha pertanian, manajer lapangan, atau tenaga profesional.
+  </p>
 
-      <h3>6. Peran Perguruan Tinggi bagi Masyarakat</h3>
-      <p>Materi terakhir mengingatkan bahwa kampus bukan menara gading, tetapi bagian dari masyarakat. Perguruan tinggi memiliki tanggung jawab untuk memberikan dampak positif melalui penelitian, inovasi, dan pengabdian masyarakat. Mahasiswa diharapkan tidak hanya fokus pada nilai, tetapi juga mencari cara agar ilmu yang dipelajari bermanfaat langsung. <strong>Bagi saya, pesan ini penting</strong>: ilmu bukan sekadar untuk ijazah, tetapi untuk perubahan nyata.</p>
+  <hr>
 
-      <h3>Penutup</h3>
-      <p>Keseluruhan materi SGD hari pertama memberi gambaran utuh tentang dunia perkuliahan. Saya belajar bahwa menjadi mahasiswa berarti siap belajar mandiri, mengatur keuangan, aktif di organisasi, menguasai teknologi, dan memiliki kepedulian sosial. Rasanya seperti dibekali peta sebelum memasuki perjalanan panjang — perjalanan yang menantang, tetapi penuh peluang jika dijalani dengan kesadaran dan semangat.</p>
+  <h3>Materi 3 — Perguruan Tinggi di Era Digital dan Revolusi Industri</h3>
+  <p>
+    <strong>Pemateri:</strong> Prof. Dr. Ir. Sholeh Hadi Pramono, M.S.<br>
+    <strong>Moderator:</strong> Muhammad Helmi, S.Pt., M.Agr.Sc.
+  </p>
+  <p>
+    Era digital ditandai kemajuan <strong>IoT, AI, Big Data, dan Smart Factory</strong> 
+    yang mulai masuk ke dunia pertanian melalui <em>smart greenhouse, drone pertanian, 
+    dan sistem monitoring lahan</em>. Penelitian didukung software seperti SPSS, 
+    SmartPLS, dan ArcGIS. <strong>Etika akademik</strong> dan keamanan data tetap 
+    menjadi prioritas.
+  </p>
 
-      <button class="btn" onclick="backToList()" style="margin-top:30px;">← Kembali</button>
-    </article>
-  `;
-  } else if(id===2){
+  <hr>
+
+  <h3>Materi 4 — Peran Perguruan Tinggi bagi Masyarakat</h3>
+  <p>
+    <strong>Pemateri:</strong> Heri Krismono & Doni (BAPPEDA Kota Kediri)<br>
+    <strong>Moderator:</strong> Septian Maulana Purnama, S.P., M.P.
+  </p>
+  <p>
+    Dijelaskan visi RPJMD Kota Kediri 2025–2029: <strong>"MAPAN" 
+    (Maju, Agamis, Produktif, Aman, Ngangeni)</strong>. Hal ini sejalan 
+    dengan UU No.12 Tahun 2012 bahwa perguruan tinggi berperan 
+    mencetak lulusan kompeten, mandiri, dan beriman.
+  </p>
+
+  <hr>
+  
+  <button class="btn" onclick="backToList()">← Kembali</button>
+</article> else if(id===2){
     articleView.innerHTML=`
       <article class="post">
         <img src="https://via.placeholder.com/800x400" alt="Artikel 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
