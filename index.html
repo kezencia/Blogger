@@ -31,6 +31,11 @@
       display: inline-flex; align-items: center; gap: 10px; background: var(--card);
       border-radius: var(--radius); padding: 10px 14px; box-shadow: var(--shadow);
     }
+    .post .btn {
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
     h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
     .tagline { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
     .btn {
@@ -65,20 +70,30 @@ footer { width: 100%; text-align: center; color: var(--muted); padding: 28px 12p
       <button id="musicBtn" class="btn" aria-pressed="false" title="Putar/Jeda Musik">▶︎ Play</button>
     </div>
     <p class="tagline">Clean • Minimalis • Modern</p>
-  </header>  <main>
-    <article class="post">
-      <h2>Halo! 👋</h2>
-      <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik YouTube diputar sebagai <em>audio-only</em> (videonya disembunyikan).</p>
-    </article>
-    <article class="post">
-      <h2>Tambahkan Post Baru</h2>
-      <p>Duplikasi blok <code>&lt;article class="post"&gt;...&lt;/article&gt;</code> lalu sesuaikan judul dan isi. Desain responsif &amp; rapi di HP.</p>
-    </article>
-    <article class="post">
-      <h2>Kustomisasi</h2>
-      <p>Ubah warna, font, dan jarak di bagian <code>:root</code> atau style lain sesuai selera kamu.</p>
-    </article>
-  </main>  <footer>
+  </header>
+  <main>
+  <article class="post">
+    <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
+    <h2>Halo! 👋</h2>
+    <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik YouTube diputar sebagai <em>audio-only</em> (videonya disembunyikan).</p>
+    <button class="btn" style="margin-top:14px;">Baca Selengkapnya</button>
+  </article>
+
+  <article class="post">
+    <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
+    <h2>Tambahkan Post Baru</h2>
+    <p>Duplikasi blok <code>&lt;article class="post"&gt;...&lt;/article&gt;</code> lalu sesuaikan judul dan isi. Desain responsif &amp; rapi di HP.</p>
+    <button class="btn" style="margin-top:14px;">Baca Selengkapnya</button>
+  </article>
+
+  <article class="post">
+    <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 3" style="width:100%;border-radius:12px;margin-bottom:12px;">
+    <h2>Kustomisasi</h2>
+    <p>Ubah warna, font, dan jarak di bagian <code>:root</code> atau style lain sesuai selera kamu.</p>
+    <button class="btn" style="margin-top:14px;">Baca Selengkapnya</button>
+  </article>
+  </main>
+  <footer>
     © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
   </footer>  <!-- Iframe musik YouTube (disembunyikan) -->  <div id="player-container" aria-hidden="true">
     <div id="bg-music"></div>
