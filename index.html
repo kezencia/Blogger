@@ -1,122 +1,180 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog Sederhana</title>
-  <meta name="description" content="Blog minimalis – clean, modern, simple. Musik lokal diputar otomatis (audio-only)." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fafafa;
-      --card: #ffffff;
-      --text: #222222;
-      --muted: #6b7280;
-      --accent: #111111;
-      --shadow: 0 8px 24px rgba(0,0,0,.08);
-      --radius: 16px;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin:0; }
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.6;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    header {
-      width: 100%; text-align: center; padding: 40px 16px 24px;
-    }
-    .brand {
-      display: inline-flex; align-items: center; gap: 10px; background: var(--card);
-      border-radius: var(--radius); padding: 10px 14px; box-shadow: var(--shadow);
-    }
-    h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
-    .tagline { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
-    .btn {
-      appearance: none; border: 0; cursor: pointer; border-radius: 999px;
-      padding: 10px 14px; background: var(--accent); color: #fff; font-weight: 700;
-      font-size: 14px; box-shadow: var(--shadow);
-      transition: transform .12s ease, opacity .2s ease;
-    }
-    .btn:active { transform: translateY(1px) scale(.99); }
-    .btn[disabled] { opacity: .6; cursor: not-allowed; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog Sederhana</title>
+<meta name="description" content="Blog minimalis – clean, modern, simple. Musik lokal diputar otomatis (audio-only)." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #222222;
+    --muted: #6b7280;
+    --accent: #111111;
+    --shadow: 0 8px 24px rgba(0,0,0,.08);
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin:0; }
+  body {
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  header {
+    width: 100%; text-align: center; padding: 40px 16px 24px;
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px; background: var(--card);
+    border-radius: var(--radius); padding: 10px 14px; box-shadow: var(--shadow);
+  }
+  h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); letter-spacing: -0.02em; }
+  .tagline { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  .btn {
+    appearance: none; border: 0; cursor: pointer; border-radius: 999px;
+    padding: 10px 14px; background: var(--accent); color: #fff; font-weight: 700;
+    font-size: 14px; box-shadow: var(--shadow);
+    transition: transform .12s ease, opacity .2s ease;
+  }
+  .btn:active { transform: translateY(1px) scale(.99); }
+  .btn[disabled] { opacity: .6; cursor: not-allowed; }
 
-    main { width: min(820px, 92vw); margin: 10px auto 40px; text-align: center; }
-    .post { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
-      padding: 22px; margin: 18px auto; text-align: left; }
-    .post h2 { margin: 0 0 8px; font-size: clamp(20px, 3.2vw, 26px); }
-    .post p { margin: 0; color: #374151; }
-    .post .btn { font-size: 13px; padding: 8px 14px; margin-top:14px; }
+  main { width: min(820px, 92vw); margin: 10px auto 40px; text-align: center; }
+  .post { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 22px; margin: 18px auto; text-align: left; }
+  .post h2 { margin: 0 0 8px; font-size: clamp(20px, 3.2vw, 26px); }
+  .post p { margin: 0; color: #374151; }
+  .post .btn { font-size: 13px; padding: 8px 14px; margin-top:14px; }
 
-    footer { width: 100%; text-align: center; color: var(--muted); padding: 28px 12px 40px; }
+  footer { width: 100%; text-align: center; color: var(--muted); padding: 28px 12px 40px; }
 
-    /* Audio disembunyikan */
-    audio { position: absolute; left: -9999px; width: 1px; height: 1px; }
+  /* Audio disembunyikan */
+  audio { position: absolute; left: -9999px; width: 1px; height: 1px; }
 
-    /* Toast info */
-    .toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-      background: #111; color: #fff; padding: 10px 14px; border-radius: 10px;
-      box-shadow: var(--shadow); font-size: 13px;
-      opacity: 0; pointer-events: none; transition: opacity .25s ease;
-    }
-    .toast.show { opacity: 1; }
-  </style>
+  /* Toast info */
+  .toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+    background: #111; color: #fff; padding: 10px 14px; border-radius: 10px;
+    box-shadow: var(--shadow); font-size: 13px;
+    opacity: 0; pointer-events: none; transition: opacity .25s ease;
+  }
+  .toast.show { opacity: 1; }
+
+  /* Transisi konten */
+  .fade { opacity: 0; transition: opacity .3s ease; }
+  .fade.show { opacity: 1; }
+</style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <h1>Blog Sederhana</h1>
-      <button id="musicBtn" class="btn" aria-pressed="false" title="Putar/Jeda Musik">▶︎ Play</button>
-    </div>
-    <p class="tagline">Clean • Minimalis • Modern</p>
-  </header>
+<header>
+  <div class="brand">
+    <h1>Blog Sederhana</h1>
+    <button id="musicBtn" class="btn" aria-pressed="false" title="Putar/Jeda Musik">▶︎ Play</button>
+  </div>
+  <p class="tagline">Clean • Minimalis • Modern</p>
+</header>
 
-  <main>
-    <article class="post">
-      <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
-      <h2>Halo! 👋</h2>
-      <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik lokal diputar otomatis sebagai <em>audio-only</em>.</p>
-      <button class="btn">Baca Selengkapnya</button>
-    </article>
+<main id="content" class="fade show">
+  <!-- Halaman utama -->
+  <article class="post">
+    <img src="IMG_20250815_120218.jpg" alt="Artikel 1" style="width:100%;border-radius:12px;margin-bottom:12px;">
+    <h2>Halo! 👋</h2>
+    <p>Ini contoh blog minimalis yang bisa kamu taruh di GitHub Pages. Musik lokal diputar otomatis sebagai <em>audio-only</em>.</p>
+    <button class="btn" onclick="loadArticle('satu')">Baca Selengkapnya</button>
+  </article>
 
-    <article class="post">
-      <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
-      <h2>Tambahkan Post Baru</h2>
-      <p>Duplikasi blok <code>&lt;article class="post"&gt;...&lt;/article&gt;</code> lalu sesuaikan judul dan isi.</p>
-      <button class="btn">Baca Selengkapnya</button>
-    </article>
+  <article class="post">
+    <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 2" style="width:100%;border-radius:12px;margin-bottom:12px;">
+    <h2>Tambahkan Post Baru</h2>
+    <p>Duplikasi blok <code>&lt;article&gt;</code> lalu sesuaikan judul dan isi.</p>
+    <button class="btn" onclick="loadArticle('dua')">Baca Selengkapnya</button>
+  </article>
+</main>
 
-    <article class="post">
-      <img src="https://via.placeholder.com/800x400" alt="Thumbnail Post 3" style="width:100%;border-radius:12px;margin-bottom:12px;">
-      <h2>Kustomisasi</h2>
-      <p>Ubah warna, font, dan jarak di bagian <code>:root</code> atau style lain sesuai selera kamu.</p>
-      <button class="btn">Baca Selengkapnya</button>
-    </article>
-  </main>
+<footer>
+  © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
+</footer>
 
-  <footer>
-    © <span id="y"></span> Blog Sederhana • Dibuat ringan dengan HTML+CSS+JS
-  </footer>
+<!-- Audio lokal -->
+<audio id="bgMusic" src="obsessed_slowed.mp3" preload="auto" loop></audio>
 
-  <!-- Audio lokal (disembunyikan) -->
-  <audio id="bgMusic" src="obsessed_slowed.mp3" preload="auto" loop></audio>
-
-  <!-- Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
-  const music = document.getElementById('bgMusic');
-  const btn = document.getElementById('musicBtn');
-  const toastEl = document.getElementById('toast');
-  let isPlaying = false;
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('musicBtn');
+const toastEl = document.getElementById('toast');
+const content = document.getElementById('content');
+let isPlaying = false;
 
-  // Tahun footer
-  document.getElementById('y').textContent = new Date().getFullYear();
+// Tahun footer
+document.getElementById('y').textContent = new Date().getFullYear();
 
-  // Helper toast
-  function toast(msg, ms = 1800) {
+// Toast helper
+function toast(msg, ms = 1800) {
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => toastEl.classList.remove('show'), ms);
+}
+
+// Kontrol musik
+btn.addEventListener('click', () => {
+  if (isPlaying) {
+    music.pause();
+    btn.textContent = '▶︎ Play';
+    btn.setAttribute('aria-pressed', 'false');
+    toast('Musik dijeda');
+  } else {
+    music.play().then(() => {
+      btn.textContent = '❚❚ Pause';
+      btn.setAttribute('aria-pressed', 'true');
+      toast('Musik diputar');
+    }).catch(() => toast('Ketuk yaa untuk memulai musik.'));
+  }
+  isPlaying = !isPlaying;
+});
+
+// Auto-enable musik pada interaksi pertama
+const enableSoundOnce = () => {
+  music.play().catch(()=>{});
+  window.removeEventListener('touchstart', enableSoundOnce);
+  window.removeEventListener('click', enableSoundOnce);
+};
+window.addEventListener('touchstart', enableSoundOnce, { once:true });
+window.addEventListener('click', enableSoundOnce, { once:true });
+
+// Konten artikel (SPA sederhana)
+function loadArticle(id) {
+  content.classList.remove('show');
+  setTimeout(()=>{
+    if(id==='satu'){
+      content.innerHTML = `
+        <article class="post">
+          <h2>Artikel Satu Lengkap</h2>
+          <img src="IMG_20250815_120218.jpg" style="width:100%;border-radius:12px;margin:12px 0;">
+          <p>Lorem ipsum versi panjang untuk artikel satu... Kamu bisa isi sesuai kebutuhan.</p>
+          <button class="btn" onclick="goHome()">← Kembali</button>
+        </article>`;
+    } else if(id==='dua'){
+      content.innerHTML = `
+        <article class="post">
+          <h2>Artikel Dua Lengkap</h2>
+          <p>Ini isi detail artikel kedua. Tulis konten lengkap di sini.</p>
+          <button class="btn" onclick="goHome()">← Kembali</button>
+        </article>`;
+    }
+    content.classList.add('show');
+  },300);
+}
+function goHome() { location.reload(); }
+</script>
+</body>
+</html>  function toast(msg, ms = 1800) {
     toastEl.textContent = msg;
     toastEl.classList.add('show');
     clearTimeout(window.__toastTimer);
